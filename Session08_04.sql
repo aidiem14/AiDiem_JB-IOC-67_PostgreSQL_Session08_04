@@ -47,4 +47,13 @@ end / 100
 );
 
 -- Gọi thử
-call calculate_discount(2, null);
+DO $$ 
+DECLARE 
+    v_final_price NUMERIC;
+BEGIN 
+    -- Gọi procedure và truyền biến vào vị trí OUT
+    CALL calculate_discount(2, v_final_price); 
+
+    -- In kết quả ra màn hình (Thông báo)
+    RAISE NOTICE 'Lương mới là: %', v_final_price;
+END $$;
